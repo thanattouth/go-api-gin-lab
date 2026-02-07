@@ -1,0 +1,23 @@
+package services
+
+import (
+	"example.com/student-api/models"
+	"example.com/student-api/repositories"
+)
+
+type StudentService struct {
+	Repo *repositories.StudentRepository
+}
+
+func (s *StudentService) GetStudents() ([]models.Student, error) {
+	return s.Repo.GetAll()
+}
+
+func (s *StudentService) GetStudentByID(id string) (*models.Student, error) {
+	return s.Repo.GetByID(id)
+}
+
+func (s *StudentService) CreateStudent(student models.Student) error {
+	// (Optional) คุณสามารถเพิ่ม Logic ตรวจสอบข้อมูลตรงนี้ได้ เช่น GPA ห้ามติดลบ
+	return s.Repo.Create(student)
+}
