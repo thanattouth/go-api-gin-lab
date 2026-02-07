@@ -21,12 +21,12 @@
 - GCC Compiler (สำหรับ SQLite3 driver)
 
 ### 2. Installation & Running
-    ```bash
-    # Clone the repository
-    git clone [https://github.com/thanattouth/go-api-gin-lab.git](https://github.com/thanattouth/go-api-gin-lab.git)
+```bash
+# Clone the repository
+git clone [https://github.com/thanattouth/go-api-gin-lab.git](https://github.com/thanattouth/go-api-gin-lab.git)
 
-    # Install dependencies
-    go mod tidy
+# Install dependencies
+go mod tidy
 
-    # Start the server
-    go run main.go
+# Start the server
+go run main.go
