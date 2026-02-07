@@ -2,22 +2,31 @@
 
 # Student API with Gin (CS362 Lab)
 
-## How to Run
-1. Install dependencies:
-   ```bash
-   go mod tidy
+## Tech Stack
+- **Language:** Go 1.21+
+- **Framework:** [Gin Gonic](https://gin-gonic.com/)
+- **Database:** SQLite3 (Lightweight & Reliable)
 
-2. Run the server:
+## API Endpoint
+- GET       /students       : ดึงรายชื่อนักศึกษาทั้งหมด
+- GET       /students/:id   : ดึงข้อมูลนักศึกษาตาม ID
+- POST	    /students       : เพิ่มนักศึกษาใหม่ (มี Validation)
+- PUT	    /students/:id   : แก้ไขข้อมูลนักศึกษา
+- DELETE    /students/:id   : ลบข้อมูลนักศึกษา (HTTP 204)
+
+## Getting Started
+
+### 1. Prerequisites
+- ติดตั้ง Go (Version 1.21 ขึ้นไป)
+- GCC Compiler (สำหรับ SQLite3 driver)
+
+### 2. Installation & Running
     ```bash
+    # Clone the repository
+    git clone [https://github.com/thanattouth/go-api-gin-lab.git](https://github.com/thanattouth/go-api-gin-lab.git)
+
+    # Install dependencies
+    go mod tidy
+
+    # Start the server
     go run main.go
-
-API Endpoints
-    - GET /students - Get all students
-    - GET /students/:id - Get student by ID
-    - POST /students - Create new student
-    - PUT /students/:id - Update student
-    - DELETE /students/:id - Delete student
-
-Tech Stack
-    - Go (Gin Framework)
-    - SQLite3
