@@ -25,6 +25,7 @@ func main() {
 	r.GET("/students/:id", handler.GetStudentByID)
 	r.POST("/students", handler.CreateStudent)
 	r.PUT("/students/:id", handler.UpdateStudent)
+	r.DELETE("/students/:id", handler.DeleteStudent)
 
 	// 5. เริ่ม Server
 	r.Run(":8080")

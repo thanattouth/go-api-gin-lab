@@ -63,3 +63,14 @@ func (h *StudentHandler) UpdateStudent(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Student updated successfully"})
 }
+
+func (h *StudentHandler) DeleteStudent(c *gin.Context) {
+	id := c.Param("id")
+
+	if err := h.Service.DeleteStudent(id); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Student deleted successfully"})
+}

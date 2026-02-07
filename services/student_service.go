@@ -26,3 +26,8 @@ func (s *StudentService) UpdateStudent(id string, student models.Student) error 
 	// ตรงนี้อาจจะเพิ่ม Logic เช็คว่า id นี้มีจริงไหมก่อนก็ได้
 	return s.Repo.Update(id, student)
 }
+
+func (s *StudentService) DeleteStudent(id string) error {
+	// Business Logic (ถ้ามี)
+	return s.Repo.Delete(id)
+}

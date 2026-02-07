@@ -55,3 +55,8 @@ func (r *StudentRepository) Update(id string, s models.Student) error {
 	)
 	return err
 }
+
+func (r *StudentRepository) Delete(id string) error {
+	_, err := r.DB.Exec("DELETE FROM students WHERE id = ?", id)
+	return err
+}
