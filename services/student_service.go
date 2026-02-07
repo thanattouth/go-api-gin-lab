@@ -1,6 +1,8 @@
 package services
 
 import (
+	"errors"
+
 	"example.com/student-api/models"
 	"example.com/student-api/repositories"
 )
@@ -18,16 +20,16 @@ func (s *StudentService) GetStudentByID(id string) (*models.Student, error) {
 }
 
 func (s *StudentService) CreateStudent(student models.Student) error {
-	// (Optional) คุณสามารถเพิ่ม Logic ตรวจสอบข้อมูลตรงนี้ได้ เช่น GPA ห้ามติดลบ
+	if student.GPA < 0 || student.GPA > 4.0 {
+		return errors.New("GPA must be between 0.0 and 4.0")
+	}
 	return s.Repo.Create(student)
 }
 
 func (s *StudentService) UpdateStudent(id string, student models.Student) error {
-	// ตรงนี้อาจจะเพิ่ม Logic เช็คว่า id นี้มีจริงไหมก่อนก็ได้
 	return s.Repo.Update(id, student)
 }
 
 func (s *StudentService) DeleteStudent(id string) error {
-	// Business Logic (ถ้ามี)
 	return s.Repo.Delete(id)
 }

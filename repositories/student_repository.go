@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"database/sql"
+	"errors"
 
 	"example.com/student-api/models" // ตรวจสอบชื่อ module ให้ตรงกับ go.mod
 )
@@ -49,11 +50,25 @@ func (r *StudentRepository) Create(s models.Student) error {
 }
 
 func (r *StudentRepository) Update(id string, s models.Student) error {
-	_, err := r.DB.Exec(
+	result, err := r.DB.Exec(
 		"UPDATE students SET name = ?, major = ?, gpa = ? WHERE id = ?",
 		s.Name, s.Major, s.GPA, id,
 	)
-	return err
+
+	if err != nil {
+		return err
+	}
+
+	rows, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+
+	if rows == 0 {
+		return errors.New("no student found with this ID")
+	}
+
+	return nil
 }
 
 func (r *StudentRepository) Delete(id string) error {
