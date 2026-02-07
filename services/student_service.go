@@ -21,3 +21,8 @@ func (s *StudentService) CreateStudent(student models.Student) error {
 	// (Optional) คุณสามารถเพิ่ม Logic ตรวจสอบข้อมูลตรงนี้ได้ เช่น GPA ห้ามติดลบ
 	return s.Repo.Create(student)
 }
+
+func (s *StudentService) UpdateStudent(id string, student models.Student) error {
+	// ตรงนี้อาจจะเพิ่ม Logic เช็คว่า id นี้มีจริงไหมก่อนก็ได้
+	return s.Repo.Update(id, student)
+}

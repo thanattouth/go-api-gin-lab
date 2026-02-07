@@ -46,3 +46,20 @@ func (h *StudentHandler) CreateStudent(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, student)
 }
+
+func (h *StudentHandler) UpdateStudent(c *gin.Context) {
+	id := c.Param("id")
+	var student models.Student
+
+	if err := c.ShouldBindJSON(&student); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	if err := h.Service.UpdateStudent(id, student); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Student updated successfully"})
+}
