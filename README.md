@@ -1,0 +1,1 @@
+![Go CI](https://github.com/thanattouth/go-api-gin-lab/actions/workflows/go-ci.yml/badge.svg)
