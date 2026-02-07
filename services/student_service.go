@@ -20,8 +20,11 @@ func (s *StudentService) GetStudentByID(id string) (*models.Student, error) {
 }
 
 func (s *StudentService) CreateStudent(student models.Student) error {
+	if student.Id == "" || student.Name == "" {
+		return errors.New("ID and Name are required")
+	}
 	if student.GPA < 0 || student.GPA > 4.0 {
-		return errors.New("GPA must be between 0.0 and 4.0")
+		return errors.New("GPA must be between 0.00 and 4.00")
 	}
 	return s.Repo.Create(student)
 }

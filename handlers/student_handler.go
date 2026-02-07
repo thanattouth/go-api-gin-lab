@@ -72,5 +72,5 @@ func (h *StudentHandler) DeleteStudent(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Student deleted successfully"})
+	c.Status(http.StatusNoContent)
 }
